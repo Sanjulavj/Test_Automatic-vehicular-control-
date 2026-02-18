@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<additional xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/additional_file.xsd">
+
+    <!--
+        Traffic Light Program for junction "C"
+        ========================================
+        4 phases — standard NEMA-style dual-ring simplified:
+
+        Phase 0 (42s): N-S through GREEN,  E-W RED
+        Phase 1 ( 3s): N-S YELLOW,         E-W RED
+        Phase 2 (42s): E-W through GREEN,  N-S RED
+        Phase 3 ( 3s): E-W YELLOW,         N-S RED
+
+        Signal string index order (set by netconvert for a 4-arm, 2-lane junction):
+        Each incoming edge contributes connections in the order netconvert assigns them.
+        We use "G" = green, "y" = yellow, "r" = red, "g" = green (lower priority / permissive).
+
+        Because exact link indices depend on netconvert output, this TLL is written
+        as a template with 16 signals (4 arms × 2 lanes × 2 movements each, roughly).
+        After running netconvert, open the generated .net.xml to verify link count
+        and adjust the state strings if needed.
+
+        Tip: run sumo with the net file and gui, then press the TL button
+             to inspect the live signal states visually.
+    -->
+
+    <tlLogic id="C" type="static" programID="0" offset="0">
+
+        <!-- Phase 0: North-South GREEN -->
+        <phase duration="42" state="GGrrGGrr"/>
+
+        <!-- Phase 1: North-South YELLOW -->
+        <phase duration="3"  state="yyrryyrr"/>
+
+        <!-- Phase 2: East-West GREEN -->
+        <phase duration="42" state="rrGGrrGG"/>
+
+        <!-- Phase 3: East-West YELLOW -->
+        <phase duration="3"  state="rryyrryy"/>
+
+    </tlLogic>
+
+</additional>
