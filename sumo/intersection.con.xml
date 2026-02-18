@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/connections_file.xsd">
+
+    <!--
+        Lane layout per edge (2 lanes, 0-indexed from right):
+            Lane 0 → right-turn + through
+            Lane 1 → through + left-turn
+
+        For each incoming edge we define which lane connects
+        to which outgoing edge/lane.
+    -->
+
+    <!-- === FROM NORTH === -->
+    <!-- Lane 0 (right lane): right-turn → East, through → South -->
+    <connection from="N_C" to="C_E" fromLane="0" toLane="0"/>
+    <connection from="N_C" to="C_S" fromLane="0" toLane="0"/>
+    <!-- Lane 1 (left lane): through → South, left-turn → West -->
+    <connection from="N_C" to="C_S" fromLane="1" toLane="1"/>
+    <connection from="N_C" to="C_W" fromLane="1" toLane="0"/>
+
+    <!-- === FROM SOUTH === -->
+    <connection from="S_C" to="C_W" fromLane="0" toLane="0"/>
+    <connection from="S_C" to="C_N" fromLane="0" toLane="0"/>
+    <connection from="S_C" to="C_N" fromLane="1" toLane="1"/>
+    <connection from="S_C" to="C_E" fromLane="1" toLane="0"/>
+
+    <!-- === FROM EAST === -->
+    <connection from="E_C" to="C_S" fromLane="0" toLane="0"/>
+    <connection from="E_C" to="C_W" fromLane="0" toLane="0"/>
+    <connection from="E_C" to="C_W" fromLane="1" toLane="1"/>
+    <connection from="E_C" to="C_N" fromLane="1" toLane="0"/>
+
+    <!-- === FROM WEST === -->
+    <connection from="W_C" to="C_N" fromLane="0" toLane="0"/>
+    <connection from="W_C" to="C_E" fromLane="0" toLane="0"/>
+    <connection from="W_C" to="C_E" fromLane="1" toLane="1"/>
+    <connection from="W_C" to="C_S" fromLane="1" toLane="0"/>
+
+</connections>

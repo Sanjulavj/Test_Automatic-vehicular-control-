@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="intersection.net.xml"/>
+        <route-files value="intersection.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>      <!-- Simulate 1 hour -->
+        <step-length value="0.1"/> <!-- 100ms timesteps for smooth animation -->
+    </time>
+
+    <processing>
+        <lateral-resolution value="0.8"/> <!-- Enable sublane model for realistic lane changes -->
+    </processing>
+
+    <output>
+        <!-- Aggregated detector output every 60 seconds -->
+        <summary-output value="output/summary.xml"/>
+        <tripinfo-output value="output/tripinfo.xml"/>
+        <queue-output value="output/queue.xml"/>
+    </output>
+
+    <report>
+        <verbose value="false"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
